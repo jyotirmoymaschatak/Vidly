@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+
+@if (Model.Movies.Count == 0)
+{
+    <text> No one has rented this Movie!</text>
+}
+else
+{
+    <ul>
+        @foreach (var movie in Model.Movies)
+        {
+            <li>
+                @movie.Name
+            </li>
+        }
+    </ul>
+}

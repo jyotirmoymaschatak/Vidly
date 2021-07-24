@@ -41,16 +41,16 @@ namespace Vidly.Controllers
         }
 
         // Get: Movies
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
+        //public ActionResult Index(int? pageIndex, string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //        pageIndex = 1;
 
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "Name";
+        //    if (String.IsNullOrWhiteSpace(sortBy))
+        //        sortBy = "Name";
 
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-        }
+        //    return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+        //}
 
         //Get Movies/released/2015/4
         [Route("Movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
@@ -59,6 +59,26 @@ namespace Vidly.Controllers
             return Content(year + "/" + month); 
         }
 
+        //Get Movies (Modified due to Hands On)
+        public ActionResult Index()
+        {
 
+            var movie = new List<Movie>
+            { 
+                new Movie {Name="Movie1"},
+                new Movie {Name="Movie2"}
+            };
+            
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movies = movie
+                
+            };
+
+            return View(viewModel);
+
+            
+        }
     }
 }
